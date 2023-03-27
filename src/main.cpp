@@ -1,6 +1,7 @@
 #include <iostream>
 #include <ctime>
 #include <array>
+#include <cstdio>
 
 #include "../includes/Display.h"
 
@@ -17,6 +18,28 @@ enum arg
     h,
     r
 };
+
+void handle_input(std::string command, Player e)
+{
+    std::cout<<"command: ";
+    std::cin>>command;
+    if(command == "right")
+    {
+        e.right(1);
+    }
+    else if(command == "left")
+    {
+        e.left(1);
+    }
+    else if(command == "up")
+    {
+        e.up(1);
+    }
+    else if(command == "down")
+    {
+        e.down(1);
+    }
+}
 
 int main(int argc, char** argv)
 {
@@ -50,14 +73,30 @@ int main(int argc, char** argv)
     d.draw(p);
     std::time_t prev_tick = 0;
     std::time_t clock = std::time(nullptr);
+    int counter = 0;
+    std::string command;
     while(1)
-    {   
-        clock = std::time(nullptr);
-        if(clock - prev_tick > 0)
-        {
-            std::cout<<std::asctime(std::localtime(&clock));
-            d.draw(p);
-            prev_tick = clock;
-        }
+    {
+    handle_input(command, p);
+    d.draw(p);
     }
+    // while(1)
+    // {   
+    //     clock = std::time(nullptr);
+    //     if(clock - prev_tick > 0)
+    //     {
+    //         std::cout<<std::asctime(std::localtime(&clock));
+    //         d.draw(p);
+    //         if(counter%4==0)
+    //             p.up(1);
+    //         if(counter%4==1)
+    //             p.right(1);
+    //         if(counter%4==2)
+    //             p.down(1);
+    //         if(counter%4==3)
+    //             p.left(1);
+    //         prev_tick = clock;
+    //         counter++;
+    //     }
+    // }
 }

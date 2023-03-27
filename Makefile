@@ -1,9 +1,11 @@
 BUILD_DIR := ./tmp/build
 SRC_DIR := ./src
 
+SRC_FILES := ${SRC_DIR}/*.cpp
+
 temp:
-	g++ -c ./src/main.cpp ./src/Player.cpp ./src/Display.cpp
-	g++ main.o Player.o Display.o -o Run
+	g++ -c ${SRC_FILES}
+	g++ main.o Player.o Display.o -o ${BUILD_DIR}/Run
 	rm *.o
 
 clean: Run

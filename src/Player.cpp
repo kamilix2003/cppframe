@@ -4,35 +4,27 @@
 
 void Player::right(int range)
 {
-    x_+=range;
+    Entity::x_+=range;
 }
 
 void Player::left(int range)
 {
-    x_-=range;
+    Entity::x_-=range;
 }
 
 void Player::up(int range)
 {
-    y_-=range;
+    Entity::y_-=range;
 }
 
 void Player::down(int range)
 {
-    y_+=range;
+    Entity::y_+=range;
 }
 
-int Player::get_x()
+Player::Player(size_t x, size_t y):
+    Entity()
 {
-    return x_;
-}
-
-int Player::get_y()
-{
-    return y_;
-}
-Player::Player(size_t x, size_t y)
-{
-    x_ = x;
-    y_ = y;
+    Entity::x_ = x;
+    Entity::y_ = y;
 }
