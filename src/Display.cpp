@@ -19,14 +19,28 @@ void Display::draw(Player p)
 {
     for(size_t y = 0; y < frame_.size(); y++)
     {
+        for(int i = 0; i <= frame_[0].size() && y == 0;i++)
+        {
+            std::cout<<'x';
+        }
         for(size_t x = 0; x < frame_[y].size(); x++)
         {
+            if((x == 0 || x == frame_[0].size()-1)&&(y != 0))
+            {
+                std::cout<<'x';
+            }
             if(p.get_x() == x && p.get_y() == y)
             {
                 std::cout<<'p';
                 continue;
             }
             std::cout<<frame_[y][x];
+        }
+        for(int i = 0; i <= frame_[0].size() && y == frame_.size()-1;i++)
+        {
+            if(i == 0)
+                std::cout<<"\n";
+            std::cout<<'x';
         }
         std::cout<<std::endl;
     }

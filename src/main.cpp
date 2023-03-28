@@ -28,28 +28,6 @@ enum directions
     WEST,
 };
 
-void handle_input(std::string command, Player e)
-{
-    std::cout<<"command: ";
-    std::cin>>command;
-    if(command == "right")
-    {
-        e.right(1);
-    }
-    else if(command == "left")
-    {
-        e.left(1);
-    }
-    else if(command == "up")
-    {
-        e.up(1);
-    }
-    else if(command == "down")
-    {
-        e.down(1);
-    }
-}
-
 int main(int argc, char** argv)
 {
     bool gameover = false;
