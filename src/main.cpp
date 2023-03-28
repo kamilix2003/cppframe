@@ -4,8 +4,7 @@
 #include <cstdio>
 
 #include "../includes/Display.h"
-
-#define ESC "\033"
+#include "../includes/defines.h"
 
 struct Screen
 {
@@ -54,7 +53,7 @@ void handle_input(std::string command, Player e)
 int main(int argc, char** argv)
 {
     bool gameover = false;
-    Screen s{30, 10, 10};
+    Screen s{MAX_WIDTH, MAX_HEIGHT, 10};
     for(int i = 0; i < argc; i++) // handle input flags
     {
         if(*argv[i] == '-')
@@ -81,7 +80,7 @@ int main(int argc, char** argv)
             << s.refresh << "\n";
     Display d(s.width, s.height, s.refresh);
     Player p(s.width/2, s.height/2);
-    d.draw(p);
+    p.set_velocity(2, 1);
     std::time_t prev_tick = 0;
     std::time_t clock = std::time(nullptr);
     while(!gameover)
@@ -90,6 +89,7 @@ int main(int argc, char** argv)
         if(clock - prev_tick > 0)
         {
             std::cout<<std::asctime(std::localtime(&clock));
+            p.update();
             d.draw(p);
             prev_tick = clock;
             std::cout<<ESC<<"[2J";
