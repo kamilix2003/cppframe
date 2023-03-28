@@ -23,8 +23,6 @@ void Player::down(int range)
 }
 
 Player::Player(size_t x, size_t y):
-    Entity()
-{
-    Entity::x_ = x;
-    Entity::y_ = y;
-}
+    Entity(x, y)
+    {
+    }

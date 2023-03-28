@@ -19,6 +19,11 @@ enum arg
     r
 };
 
+enum directions
+{
+    
+}
+
 void handle_input(std::string command, Player e)
 {
     std::cout<<"command: ";
@@ -73,30 +78,15 @@ int main(int argc, char** argv)
     d.draw(p);
     std::time_t prev_tick = 0;
     std::time_t clock = std::time(nullptr);
-    int counter = 0;
-    std::string command;
     while(1)
-    {
-    handle_input(command, p);
-    d.draw(p);
+    {   
+        clock = std::time(nullptr);
+        if(clock - prev_tick > 0)
+        {
+            std::cout<<std::asctime(std::localtime(&clock));
+            d.draw(p);
+            prev_tick = clock;
+            std::cout<<"\033[2J";
+        }
     }
-    // while(1)
-    // {   
-    //     clock = std::time(nullptr);
-    //     if(clock - prev_tick > 0)
-    //     {
-    //         std::cout<<std::asctime(std::localtime(&clock));
-    //         d.draw(p);
-    //         if(counter%4==0)
-    //             p.up(1);
-    //         if(counter%4==1)
-    //             p.right(1);
-    //         if(counter%4==2)
-    //             p.down(1);
-    //         if(counter%4==3)
-    //             p.left(1);
-    //         prev_tick = clock;
-    //         counter++;
-    //     }
-    // }
 }
