@@ -5,6 +5,8 @@
 
 #include "../includes/Display.h"
 
+#define ESC "\033"
+
 struct Screen
 {
     int width;
@@ -21,8 +23,11 @@ enum arg
 
 enum directions
 {
-    
-}
+    NORTH = 0,
+    EAST,
+    SOUTH,
+    WEST,
+};
 
 void handle_input(std::string command, Player e)
 {
@@ -48,6 +53,7 @@ void handle_input(std::string command, Player e)
 
 int main(int argc, char** argv)
 {
+    bool gameover = false;
     Screen s{30, 10, 10};
     for(int i = 0; i < argc; i++) // handle input flags
     {
@@ -78,7 +84,7 @@ int main(int argc, char** argv)
     d.draw(p);
     std::time_t prev_tick = 0;
     std::time_t clock = std::time(nullptr);
-    while(1)
+    while(!gameover)
     {   
         clock = std::time(nullptr);
         if(clock - prev_tick > 0)
@@ -86,7 +92,7 @@ int main(int argc, char** argv)
             std::cout<<std::asctime(std::localtime(&clock));
             d.draw(p);
             prev_tick = clock;
-            std::cout<<"\033[2J";
+            std::cout<<ESC<<"[2J";
         }
     }
 }

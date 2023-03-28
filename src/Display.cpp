@@ -41,14 +41,6 @@ Display::Display(size_t width, size_t height, int refresh)
         for(size_t x = 0; x < width_; x++)
         {
             frame_[y][x] = ' ';
-            if(y == 0 || y == height_-1)
-            {
-                frame_[y][x] = '-';
-            }
-            else if(x == 0 || x == width_-1)
-            {
-                frame_[y][x] = '|';
-            }
         }
     }
 }
