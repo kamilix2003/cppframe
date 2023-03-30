@@ -58,7 +58,7 @@ int main(int argc, char** argv)
             << s.refresh << "\n";
     Display d(s.width, s.height, s.refresh);
     Player p(s.width/2, s.height/2);
-    p.set_velocity(2, 1);
+    p.set_velocity(1, 1);
     std::time_t prev_tick = 0;
     std::time_t clock = std::time(nullptr);
     while(!gameover)
