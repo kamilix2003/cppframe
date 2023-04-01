@@ -64,6 +64,7 @@ int main(int argc, char** argv)
     while(!gameover)
     {   
         clock = std::time(nullptr);
+        // std::cout<<ESC<<"[1;38m";
         if(clock - prev_tick > 0)
         {
             std::cout<<std::asctime(std::localtime(&clock));

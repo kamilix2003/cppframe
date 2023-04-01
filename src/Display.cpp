@@ -31,7 +31,11 @@ void Display::draw(Player p)
             }
             if(p.get_x() == x && p.get_y() == y)
             {
-                std::cout<<'p';
+                std::cout<<"P";
+                if((x == frame_[0].size()-1)&&(y != 0))
+                {
+                std::cout<<'x';
+                }
                 continue;
             }
             std::cout<<frame_[y][x];
